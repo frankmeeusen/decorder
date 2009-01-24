@@ -1,0 +1,89 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.20706</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A3A1245F-92E4-4C6A-907B-24341E5A9228}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Decorder</RootNamespace>
+    <AssemblyName>Decorder</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>Decorder.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Helper.cs" />
+    <Compile Include="Common\Objects\Device.cs" />
+    <Compile Include="Common\Objects\IDirectory.cs" />
+    <Compile Include="Common\Objects\IEntry.cs" />
+    <Compile Include="Common\Objects\IFile.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Thfs\Objects\ThfsDirectory.cs" />
+    <Compile Include="Thfs\Objects\ThfsEntry.cs" />
+    <Compile Include="Thfs\Objects\ThfsFile.cs" />
+    <Compile Include="Thfs\Objects\ThfsVolume.cs" />
+    <Compile Include="Common\Objects\IVolume.cs" />
+    <Compile Include="Common\IO\LimitedStream.cs" />
+    <Compile Include="Common\IO\PhysicalDriveStream.cs" />
+    <Compile Include="Common\IO\Win32Stream.cs" />
+    <Compile Include="Common\Primitives\MasterBootRecord.cs" />
+    <Compile Include="Native\Enumerations.cs" />
+    <Compile Include="Native\Functions.cs" />
+    <Compile Include="Native\Structures.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Thfs\IO\ThfsFileStream.cs" />
+    <Compile Include="Thfs\Primitives\ThfsAlocRecord.cs" />
+    <Compile Include="Thfs\Primitives\ThfsFileRecord.cs" />
+    <Compile Include="Thfs\Primitives\ThfsPrimitiveRecord.cs" />
+    <Compile Include="Thfs\Primitives\ThfsTreeRecord.cs" />
+    <Compile Include="Common\Primitives\VolumeBootRecord.cs" />
+    <Compile Include="Common\Primitives\VolumeRecord.cs" />
+    <Compile Include="Thfs\Primitives\ThfsVolumeBootRecord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
